@@ -23,10 +23,31 @@ namespace SGJ.Meta {
 		public Vector3 CameraStartPos;
 		[Header("Dependencies")]
 		public Camera Camera;
-		public Transform CameraTransform;
-		public Room[]    Rooms;
+		public Transform  CameraTransform;
+		public Room[]     Rooms;
+		public GameObject WinScreen;
 
 		void Start() {
+			if ( LevelController.Instance.IsGameWon ) {
+				AnimAndLoadVictory();
+			} else {
+				AnimAndLoadNextRoom();
+			}
+		}
+
+		void AnimAndLoadVictory() {
+			WinScreen.SetActive(true);
+			CameraTransform.position = CameraStartPos;
+			Camera.orthographicSize  = CameraStartSize;
+
+			DOTween.Sequence()
+				.AppendInterval(PauseTime)
+				.OnComplete(LoadMainMenu);
+		}
+
+		void AnimAndLoadNextRoom() {
+			WinScreen.SetActive(false);
+
 			var lc       = LevelController.Instance;
 			var roomType = lc.NextLevelType;
 			var room     = Rooms.FirstOrDefault(x => x.RoomType == roomType);
@@ -61,6 +82,10 @@ namespace SGJ.Meta {
 					CameraTransform.position = Vector3.Lerp(CameraStartPos, room.ZoomPoint.position, x);
 				}, 1f, ZoomTime))
 				.OnComplete(LoadNextRoom);
+		}
+
+		void LoadMainMenu() {
+			SceneManager.LoadScene("MainMenu");
 		}
 
 		void LoadNextRoom() {

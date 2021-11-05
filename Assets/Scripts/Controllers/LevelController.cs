@@ -1,11 +1,9 @@
-﻿using UnityEngine;
-
-using SGJ.Common;
+﻿using SGJ.Common;
 
 namespace SGJ.Controllers {
 	public class LevelController {
-		static readonly RoomType[] RoomsOrder = new [] {
-			RoomType.Kitchen, RoomType.LivingRoom, RoomType.Bathroom, RoomType.Entrance, RoomType.Bedroom
+		static readonly RoomType[] RoomsOrder = {
+			RoomType.Kitchen
 		};
 
 		static LevelController _instance;
@@ -27,12 +25,19 @@ namespace SGJ.Controllers {
 			}
 		}
 
+		public bool IsGameWon { get; private set; }
+
 		public void ResetProgress() {
 			NextLevelIndex = 0;
+			IsGameWon      = false;
 		}
 
 		public void TryAdvance() {
-			NextLevelIndex = Mathf.Clamp(NextLevelIndex + 1, 0, RoomsOrder.Length);
+			++NextLevelIndex;
+			if ( NextLevelIndex >= RoomsOrder.Length ) {
+				NextLevelIndex = RoomsOrder.Length - 1;
+				IsGameWon      = true;
+			}
 		}
 	}
 }
