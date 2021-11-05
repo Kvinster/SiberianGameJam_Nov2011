@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace SGJ.MainScreen {
@@ -10,8 +11,7 @@ namespace SGJ.MainScreen {
 		}
 
 		void OnStartGameClick() {
-			// TODO: change scene, remove debug log
-			Debug.Log("Start game");
+			SceneManager.LoadScene("Meta");
 		}
 	}
 }
