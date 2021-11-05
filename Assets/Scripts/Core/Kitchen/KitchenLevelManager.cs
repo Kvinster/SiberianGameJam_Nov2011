@@ -29,14 +29,16 @@ namespace SGJ.Core.Kitchen {
 		}
 
 		void OnSandwichEnterDeathZone() {
-			Raycaster.enabled = false;
+			Raycaster.enabled        = false;
+			SandwichSpawner.IsActive = false;
 			UnsubscribeFromDeathZone();
 			LevelController.Instance.ResetProgress();
 			Ui.Lose(ExitToMeta);
 		}
 
 		void OnOnAllSandwichesProcessed() {
-			Raycaster.enabled = false;
+			Raycaster.enabled        = false;
+			SandwichSpawner.IsActive = false;
 			UnsubscribeFromDeathZone();
 			LevelController.Instance.TryAdvance();
 			Ui.Win(ExitToMeta);
