@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnDelay: 1
+  MinSandwichGravityScale: 0.5
+  MaxSandwichGravityScale: 1.5
   SandwichPrefab: {fileID: 6941951759945404672, guid: 95add4c7fd798414387dec43a5b8f2d1,
     type: 3}
   StartSpawnPoint: {fileID: 1120176992}
@@ -1336,7 +1338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayTime: 30
-  Goal: 15
+  Goal: 25
   SandwichSpawner: {fileID: 46418183}
   DeathZone: {fileID: 1558872354}
   Raycaster: {fileID: 1875765078}
