@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
+using System.Collections.Generic;
+
 using DG.Tweening;
 
 namespace SGJ.Core.Kitchen {
 	public sealed class Sandwich : MonoBehaviour, IPointerDownHandler, IPointerClickHandler {
+		public static HashSet<Sandwich> Instances = new HashSet<Sandwich>();
+
 		public float TurnTime   = 0.5f;
 		public float TurnSpread = 10f;
 
@@ -18,8 +22,17 @@ namespace SGJ.Core.Kitchen {
 			_anim?.Kill();
 		}
 
+		void OnEnable() {
+			Instances.Add(this);
+		}
+
+		void OnDisable() {
+			Instances.Remove(this);
+		}
+
 		void Start() {
-			_rigidbody = GetComponent<Rigidbody2D>();
+			_rigidbody          = GetComponent<Rigidbody2D>();
+			_rigidbody.rotation = 0f;
 		}
 
 		public void OnPointerDown(PointerEventData eventData) {

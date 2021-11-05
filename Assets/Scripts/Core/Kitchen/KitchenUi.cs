@@ -1,44 +1,65 @@
 ﻿using UnityEngine;
 
-using System;
+using TMPro;
 
 namespace SGJ.Core.Kitchen {
 	public sealed class KitchenUi : MonoBehaviour {
 		[Header("Parameters")]
 		public float ShowTime;
 		[Header("Dependencies")]
+		public KitchenLevelManager LevelManager;
+		public GameObject LevelUiRoot;
+		public TMP_Text   TimerText;
+		public TMP_Text   ProgressText;
 		public GameObject WinScreen;
 		public GameObject LoseScreen;
 
-		bool   _isActive;
-		float  _timer;
-		Action _endAction;
+		bool  _isEndScreenActive;
+		float _timer;
 
 		void Start() {
 			WinScreen.SetActive(false);
 			LoseScreen.SetActive(false);
+			LevelUiRoot.SetActive(true);
+			LevelManager.OnCurProgressChanged += OnCurProgressChanged;
+			LevelManager.OnLevelFinished      += OnLevelFinished;
+			OnCurProgressChanged(LevelManager.CurProgress);
 		}
 
 		void Update() {
-			if ( _isActive ) {
+			if ( _isEndScreenActive ) {
 				_timer += Time.deltaTime;
 				if ( _timer >= ShowTime ) {
-					_endAction?.Invoke();
-					_isActive = false;
+					_isEndScreenActive = false;
+					LevelManager.ExitToMeta();
 				}
+			} else {
+				TimerText.text = string.Format("Time: {0:F1}", LevelManager.TimeLeft);
 			}
 		}
 
-		public void Win(Action endAction) {
-			WinScreen.SetActive(true);
-			_isActive  = true;
-			_endAction = endAction;
+		void OnCurProgressChanged(int curProgress) {
+			ProgressText.text = $"Progress: {curProgress} / {LevelManager.Goal}";
 		}
 
-		public void Lose(Action endAction) {
+		void OnLevelFinished(bool win) {
+			if ( win ) {
+				Win();
+			} else {
+				Lose();
+			}
+		}
+
+		void Win() {
+			WinScreen.SetActive(true);
+			LevelUiRoot.SetActive(false);
+			_isEndScreenActive = true;
+		}
+
+		void Lose() {
 			LoseScreen.SetActive(true);
-			_isActive  = true;
-			_endAction = endAction;
+			LevelUiRoot.SetActive(false);
+			_isEndScreenActive = true;
 		}
 	}
 }
