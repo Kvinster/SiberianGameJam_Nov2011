@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-using System.Collections.Generic;
 using System.Linq;
 
 using SGJ.Common;
@@ -11,11 +10,6 @@ using DG.Tweening;
 
 namespace SGJ.Meta {
 	public sealed class MetaManager : MonoBehaviour {
-		static readonly Dictionary<RoomType, string> RoomToSceneName = new Dictionary<RoomType, string> {
-			{ RoomType.Kitchen, "Kitchen" },
-			{ RoomType.Bathroom, "Bathroom" },
-		};
-
 		[Header("Parameters")]
 		public float PauseTime;
 		public float   ZoomTime;
@@ -90,8 +84,9 @@ namespace SGJ.Meta {
 		}
 
 		void LoadNextRoom() {
-			var roomType = LevelController.Instance.NextLevelType;
-			if ( RoomToSceneName.TryGetValue(roomType, out var sceneName) ) {
+			var roomType  = LevelController.Instance.NextLevelType;
+			var sceneName = RoomTypeHelper.RoomTypeToSceneName(roomType);
+			if ( !string.IsNullOrEmpty(sceneName) ) {
 				SceneManager.LoadScene(sceneName);
 			} else {
 				Debug.LogErrorFormat("MetaManager.LoadNextRoom: can't find scene name for room '{0}'",

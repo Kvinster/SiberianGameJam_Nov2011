@@ -2,7 +2,7 @@
 
 namespace SGJ.Controllers {
 	public class LevelController {
-		static readonly RoomType[] RoomsOrder = {
+		public static readonly RoomType[] RoomsOrder = {
 			RoomType.Kitchen,
 			RoomType.Bathroom,
 		};
@@ -39,6 +39,11 @@ namespace SGJ.Controllers {
 				NextLevelIndex = RoomsOrder.Length - 1;
 				IsGameWon      = true;
 			}
+		}
+
+		public void CheatSetNextLevelIndex(int nextLevelIndex) {
+			NextLevelIndex = nextLevelIndex;
+			IsGameWon      = false;
 		}
 	}
 }
