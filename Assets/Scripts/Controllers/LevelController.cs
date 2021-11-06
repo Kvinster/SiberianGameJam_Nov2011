@@ -3,7 +3,8 @@
 namespace SGJ.Controllers {
 	public class LevelController {
 		static readonly RoomType[] RoomsOrder = {
-			RoomType.Kitchen
+			RoomType.Kitchen,
+			RoomType.Bathroom,
 		};
 
 		static LevelController _instance;

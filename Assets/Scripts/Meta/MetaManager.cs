@@ -12,7 +12,8 @@ using DG.Tweening;
 namespace SGJ.Meta {
 	public sealed class MetaManager : MonoBehaviour {
 		static readonly Dictionary<RoomType, string> RoomToSceneName = new Dictionary<RoomType, string> {
-			{ RoomType.Kitchen, "Kitchen" }
+			{ RoomType.Kitchen, "Kitchen" },
+			{ RoomType.Bathroom, "Bathroom" },
 		};
 
 		[Header("Parameters")]

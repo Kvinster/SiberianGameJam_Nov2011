@@ -2,8 +2,8 @@
 
 using DG.Tweening;
 
-namespace SGJ.Core.Kitchen {
-	public sealed class KitchenUiScreen : MonoBehaviour {
+namespace SGJ.Core.Common {
+	public sealed class CoreUiScreen : MonoBehaviour {
 		public CanvasGroup CanvasGroup;
 
 		void Reset() {

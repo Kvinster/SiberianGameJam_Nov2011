@@ -4,16 +4,15 @@ using SGJ.Core.Common;
 
 using TMPro;
 
-namespace SGJ.Core.Kitchen {
-	public sealed class KitchenUi : MonoBehaviour {
+namespace SGJ.Core.Bathroom {
+	public sealed class BathroomUi : MonoBehaviour {
 		[Header("Parameters")]
-		public float ShowTime;
-		public float ScreenShowTime = 1f;
+		public float ShowTime = 3f;
+		public float ScreenShowTime = 0.25f;
 		[Header("Dependencies")]
-		public KitchenLevelManager LevelManager;
-		public GameObject LevelUiRoot;
-		public TMP_Text   TimerText;
-		public TMP_Text   ProgressText;
+		public BathroomLevelManager LevelManager;
+		public GameObject   LevelUiRoot;
+		public TMP_Text     TimerText;
 		public CoreUiScreen WinScreen;
 		public CoreUiScreen LoseScreen;
 
@@ -24,9 +23,7 @@ namespace SGJ.Core.Kitchen {
 			WinScreen.InitHidden();
 			LoseScreen.InitHidden();
 			LevelUiRoot.SetActive(true);
-			LevelManager.OnCurProgressChanged += OnCurProgressChanged;
-			LevelManager.OnLevelFinished      += OnLevelFinished;
-			OnCurProgressChanged(LevelManager.CurProgress);
+			LevelManager.OnLevelFinished += OnLevelFinished;
 		}
 
 		void Update() {
@@ -39,10 +36,6 @@ namespace SGJ.Core.Kitchen {
 			} else {
 				TimerText.text = string.Format("Time: {0:F1}", LevelManager.TimeLeft);
 			}
-		}
-
-		void OnCurProgressChanged(int curProgress) {
-			ProgressText.text = $"Progress: {curProgress} / {LevelManager.Goal}";
 		}
 
 		void OnLevelFinished(bool win) {
