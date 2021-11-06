@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTime: 3
-  ScreenShowTime: 1
+  ScreenShowTime: 0.25
   LevelManager: {fileID: 1773356654}
   LevelUiRoot: {fileID: 1525428014}
   TimerText: {fileID: 1676313538}
