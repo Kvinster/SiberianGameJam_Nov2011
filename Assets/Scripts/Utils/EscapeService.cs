@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
+using SGJ.Controllers;
 
 namespace SGJ.Utils {
 	public sealed class EscapeService : MonoBehaviour {
@@ -18,11 +21,16 @@ namespace SGJ.Utils {
 
 		void Update() {
 			if ( Input.GetKeyDown(KeyCode.Escape) ) {
+				if ( SceneManager.GetActiveScene().name == "MainMenu" ) {
+					LevelController.Instance.ResetProgress();
 #if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false;
+					UnityEditor.EditorApplication.isPlaying = false;
 #else
-				Application.Quit();
+					Application.Quit();
 #endif
+				} else {
+					SceneManager.LoadScene("MainMenu");
+				}
 			}
 		}
 	}
