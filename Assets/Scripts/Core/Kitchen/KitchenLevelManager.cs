@@ -38,13 +38,6 @@ namespace SGJ.Core.Kitchen {
 		public event Action<int>  OnCurProgressChanged;
 		public event Action<bool> OnLevelFinished;
 
-		void Start() {
-			SandwichSpawner.IsActive  =  true;
-			DeathZone.OnSandwichEnter += OnSandwichEnterDeathZone;
-
-			IsActive = true;
-		}
-
 		void OnDestroy() {
 			UnsubscribeFromDeathZone();
 		}
@@ -62,6 +55,13 @@ namespace SGJ.Core.Kitchen {
 					Lose();
 				}
 			}
+		}
+
+		public void StartLevel() {
+			SandwichSpawner.IsActive  =  true;
+			DeathZone.OnSandwichEnter += OnSandwichEnterDeathZone;
+
+			IsActive = true;
 		}
 
 		public void ExitToMeta() {
