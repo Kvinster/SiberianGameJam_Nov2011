@@ -19,6 +19,8 @@ namespace SGJ.Core.Toilet {
 		protected int  CurClicks { get; set; }
 		protected bool IsAlive   { get; set; } = true;
 
+		public event Action OnClicksChanged;
+
 		protected virtual void OnEnable() {
 			Instances.Add(this);
 		}
@@ -38,6 +40,7 @@ namespace SGJ.Core.Toilet {
 			}
 			++CurClicks;
 			OnCurClicksChanged();
+			OnClicksChanged?.Invoke();
 			if ( CurClicks >= TotalClicks ) {
 				StartFinish();
 			}

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -374,6 +374,50 @@ Transform:
   - {fileID: 1120176992}
   - {fileID: 95055117}
   m_Father: {fileID: 1365678858}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &383614005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383614007}
+  - component: {fileID: 383614006}
+  m_Layer: 0
+  m_Name: MusicPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &383614006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383614005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317dcbc271c64e40b18e5e43a82988c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Clip: {fileID: 8300000, guid: 65645daa3e02cb94e9f2e531ecedb05f, type: 3}
+--- !u!4 &383614007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383614005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &404266165
@@ -1607,6 +1651,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4416851472174975859, guid: 14a6438ca19fe1f42ba21250c6cf42bf,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 383614006}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14a6438ca19fe1f42ba21250c6cf42bf, type: 3}
 --- !u!1001 &5608207050950180108
@@ -1616,6 +1665,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 825231624}
     m_Modifications:
+    - target: {fileID: 5608207050610681936, guid: a572fa327fd916f41a5497511e41551d,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 383614006}
     - target: {fileID: 5608207050610681941, guid: a572fa327fd916f41a5497511e41551d,
         type: 3}
       propertyPath: m_Name

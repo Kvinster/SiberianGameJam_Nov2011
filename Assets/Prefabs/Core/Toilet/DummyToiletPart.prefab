@@ -186,6 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5975202721234417770}
   - component: {fileID: 8566606567312363482}
+  - component: {fileID: 6626559405833470723}
   - component: {fileID: 2810200400089976391}
   - component: {fileID: 1197284172872717834}
   - component: {fileID: 4851474192901913608}
@@ -226,6 +227,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalClicks: 4
   Text: {fileID: 5401566637383054437}
+--- !u!114 &6626559405833470723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5975202721234417771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27b113b75f548d192c4831e677ec7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToiletPart: {fileID: 8566606567312363482}
+  Clip: {fileID: 8300000, guid: a4a66725aec51324cac8a68328674160, type: 3}
 --- !u!114 &2810200400089976391
 MonoBehaviour:
   m_ObjectHideFlags: 0

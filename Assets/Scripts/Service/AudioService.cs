@@ -46,12 +46,10 @@ namespace SGJ.Service {
 
 		public static void StopInPool(object key) {
 			Assert.IsNotNull(key);
-			if ( Pool.TryGetValue(key, out var audioSource) ) {
+			if ( Pool.TryGetValue(key, out var audioSource) && audioSource ) {
 				audioSource.Stop();
 				Object.Destroy(audioSource);
 				Pool.Remove(key);
-			} else {
-				Debug.LogWarningFormat("AudioService.StopInPool: no audio source for key '{0}'", key);
 			}
 		}
 	}

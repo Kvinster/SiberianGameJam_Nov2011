@@ -490,6 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1725835025248717592}
   - component: {fileID: 6822884381023978455}
+  - component: {fileID: 3096299717348407301}
   - component: {fileID: 4370580565593353000}
   - component: {fileID: 8860957226915210437}
   m_Layer: 8
@@ -531,6 +532,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurnTime: 0.5
   TurnSpread: 5
+  Collider: {fileID: 4370580565593353000}
+--- !u!114 &3096299717348407301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6941951759945404672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf45d2b22924afbb2140383781121a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sandwich: {fileID: 6822884381023978455}
+  Clip: {fileID: 8300000, guid: e04cb70965742db42bd3f12cb9db614d, type: 3}
 --- !u!61 &4370580565593353000
 BoxCollider2D:
   m_ObjectHideFlags: 0

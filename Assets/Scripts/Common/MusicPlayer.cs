@@ -11,6 +11,10 @@ namespace SGJ.Common {
 		}
 
 		void OnDisable() {
+			Stop();
+		}
+
+		public void Stop() {
 			AudioService.StopInPool(this);
 		}
 	}

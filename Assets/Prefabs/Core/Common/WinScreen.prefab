@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasGroup: {fileID: 4416851472174975858}
+  Clip: {fileID: 8300000, guid: 49fb800fcedf3bf449b265ca34d00910, type: 3}
+  MusicPlayer: {fileID: 0}
 --- !u!225 &4416851472174975858
 CanvasGroup:
   m_ObjectHideFlags: 0
