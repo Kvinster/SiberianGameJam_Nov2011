@@ -18,9 +18,11 @@ namespace SGJ.Meta {
 		public Vector3 CameraStartPos;
 		[Header("Dependencies")]
 		public Camera Camera;
-		public Transform  CameraTransform;
-		public Room[]     Rooms;
-		public GameObject WinScreen;
+		public Transform    CameraTransform;
+		public Room[]       Rooms;
+		public GameObject   WinScreen;
+		public GameObject   ProgressBarRoot;
+		public GameObject[] ProgressBarElements;
 
 		void Start() {
 			if ( LevelController.Instance.IsGameWon ) {
@@ -32,6 +34,7 @@ namespace SGJ.Meta {
 
 		void AnimAndLoadVictory() {
 			WinScreen.SetActive(true);
+			ProgressBarRoot.SetActive(false);
 			CameraTransform.position = CameraStartPos;
 			Camera.orthographicSize  = CameraStartSize;
 
@@ -43,7 +46,14 @@ namespace SGJ.Meta {
 		void AnimAndLoadNextRoom() {
 			WinScreen.SetActive(false);
 
-			var lc       = LevelController.Instance;
+			var lc = LevelController.Instance;
+
+			ProgressBarRoot.SetActive(true);
+			for ( var i = 0; i < ProgressBarElements.Length; ++i ) {
+				var element = ProgressBarElements[i];
+				element.SetActive(i == lc.NextLevelIndex);
+			}
+
 			var roomType = lc.NextLevelType;
 			var room     = Rooms.FirstOrDefault(x => x.RoomType == roomType);
 			if ( !room ) {
