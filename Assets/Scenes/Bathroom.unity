@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1636,7 +1636,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1682,8 +1682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963e78aa25d246598982a80ec12a6985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinMovementForce: 3
-  MaxMovementForce: 10
+  MinMovementForce: 30
+  MaxMovementForce: 50
   ReloadTime: 0.2
   LeftHandPos: {fileID: 705497600}
   RightHandPos: {fileID: 939041696}
