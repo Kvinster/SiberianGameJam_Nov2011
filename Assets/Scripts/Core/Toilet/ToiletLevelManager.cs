@@ -9,8 +9,12 @@ namespace SGJ.Core.Toilet {
 	public sealed class ToiletLevelManager : MonoBehaviour {
 		[Header("Parameters")]
 		public float PlayTime = 30f;
+		[Header("Dependencies")]
+		public GameObject TutorialRoot;
 
 		float _playTimer;
+
+		bool _isTutorialShown;
 
 		public float LevelProgress => Mathf.Clamp01(_playTimer / PlayTime);
 
@@ -26,7 +30,32 @@ namespace SGJ.Core.Toilet {
 			BaseToiletPart.OnToiletPartDestroyed -= OnToiletPartDestroyed;
 		}
 
+		void Update() {
+			if ( _isTutorialShown && Input.anyKey ) {
+				TutorialRoot.SetActive(false);
+				_isTutorialShown = false;
+				Activate();
+			}
+			if ( !IsLevelActive ) {
+				return;
+			}
+			_playTimer += Time.deltaTime;
+			if ( _playTimer >= PlayTime ) {
+				FinishLevel(false);
+				IsLevelActive = false;
+			}
+		}
+
 		public void StartLevel() {
+			_isTutorialShown = true;
+			TutorialRoot.SetActive(true);
+		}
+
+		public void ExitToMeta() {
+			SceneManager.LoadScene("Meta");
+		}
+
+		void Activate() {
 			IsLevelActive = true;
 			foreach ( var toiletPart in BaseToiletPart.Instances ) {
 				toiletPart.IsActive = true;
@@ -40,21 +69,6 @@ namespace SGJ.Core.Toilet {
 			if ( BaseToiletPart.Instances.Count == 0 ) {
 				FinishLevel(true);
 			}
-		}
-
-		void Update() {
-			if ( !IsLevelActive ) {
-				return;
-			}
-			_playTimer += Time.deltaTime;
-			if ( _playTimer >= PlayTime ) {
-				FinishLevel(false);
-				IsLevelActive = false;
-			}
-		}
-
-		public void ExitToMeta() {
-			SceneManager.LoadScene("Meta");
 		}
 
 		void FinishLevel(bool win) {
