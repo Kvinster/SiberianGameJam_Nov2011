@@ -5,6 +5,7 @@ namespace SGJ.Controllers {
 		public static readonly RoomType[] RoomsOrder = {
 			RoomType.Kitchen,
 			RoomType.Bathroom,
+			RoomType.Toilet,
 		};
 
 		static LevelController _instance;
