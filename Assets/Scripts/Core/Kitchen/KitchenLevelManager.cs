@@ -13,12 +13,15 @@ namespace SGJ.Core.Kitchen {
 		public float PlayTime = 30f;
 		public int Goal = 15;
 		[Header("Dependencies")]
+		public GameObject TutorialRoot;
 		public SandwichSpawner    SandwichSpawner;
 		public KitchenDeathZone   DeathZone;
 		public Physics2DRaycaster Raycaster;
 
 		float _timer;
 		int   _curProgress;
+
+		bool _isTutorialShown;
 
 		public int CurProgress {
 			get => _curProgress;
@@ -43,6 +46,11 @@ namespace SGJ.Core.Kitchen {
 		}
 
 		void Update() {
+			if ( _isTutorialShown && Input.anyKey ) {
+				TutorialRoot.SetActive(false);
+				_isTutorialShown = false;
+				Activate();
+			}
 			if ( !IsActive ) {
 				return;
 			}
@@ -58,14 +66,19 @@ namespace SGJ.Core.Kitchen {
 		}
 
 		public void StartLevel() {
-			SandwichSpawner.IsActive  =  true;
-			DeathZone.OnSandwichEnter += OnSandwichEnterDeathZone;
-
-			IsActive = true;
+			TutorialRoot.SetActive(true);
+			_isTutorialShown = true;
 		}
 
 		public void ExitToMeta() {
 			SceneManager.LoadScene("Meta");
+		}
+
+		void Activate() {
+			SandwichSpawner.IsActive  =  true;
+			DeathZone.OnSandwichEnter += OnSandwichEnterDeathZone;
+
+			IsActive = true;
 		}
 
 		void UnsubscribeFromDeathZone() {
