@@ -766,6 +766,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 17, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &705497599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 705497600}
+  m_Layer: 0
+  m_Name: LeftHandPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &705497600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705497599}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1661889550}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &825231621
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Alpha: 0
+  ShapeRenderers: []
   SpriteRenderers:
   - {fileID: 953791343}
   - {fileID: 1291398718}
@@ -966,6 +997,36 @@ Transform:
   - {fileID: 1218243077}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &939041695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 939041696}
+  m_Layer: 0
+  m_Name: RightHandPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &939041696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939041695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1661889550}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &953791342
 GameObject:
@@ -1537,6 +1598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Alpha: 0
+  ShapeRenderers: []
   SpriteRenderers:
   - {fileID: 1948393645}
   - {fileID: 525647679}
@@ -1623,6 +1685,8 @@ MonoBehaviour:
   MinMovementForce: 3
   MaxMovementForce: 10
   ReloadTime: 0.2
+  LeftHandPos: {fileID: 705497600}
+  RightHandPos: {fileID: 939041696}
   LeftNotifier: {fileID: 119158707}
   RightNotifier: {fileID: 1906372023}
 --- !u!4 &1661889550
@@ -1639,6 +1703,8 @@ Transform:
   - {fileID: 119158709}
   - {fileID: 1906372025}
   - {fileID: 1291398717}
+  - {fileID: 705497600}
+  - {fileID: 939041696}
   m_Father: {fileID: 886655458}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1761,6 +1827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Alpha: 1
+  ShapeRenderers: []
   SpriteRenderers:
   - {fileID: 587488801}
   Texts: []
@@ -1973,16 +2040,6 @@ PrefabInstance:
       propertyPath: LevelManager
       value: 
       objectReference: {fileID: 1314641380}
-    - target: {fileID: 6949843087445126759, guid: 5fa94ab3bb1ab0f499030f99d504ae34,
-        type: 3}
-      propertyPath: MaxMovementSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6949843087445126759, guid: 5fa94ab3bb1ab0f499030f99d504ae34,
-        type: 3}
-      propertyPath: MinMovementSpeed
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fa94ab3bb1ab0f499030f99d504ae34, type: 3}
 --- !u!1 &1875765073
@@ -2688,6 +2745,11 @@ PrefabInstance:
       objectReference: {fileID: 1661889549}
     - target: {fileID: 6949843087445126759, guid: 5fa94ab3bb1ab0f499030f99d504ae34,
         type: 3}
+      propertyPath: IsRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949843087445126759, guid: 5fa94ab3bb1ab0f499030f99d504ae34,
+        type: 3}
       propertyPath: StartPos
       value: 
       objectReference: {fileID: 621217526}
@@ -2696,15 +2758,5 @@ PrefabInstance:
       propertyPath: LevelManager
       value: 
       objectReference: {fileID: 1314641380}
-    - target: {fileID: 6949843087445126759, guid: 5fa94ab3bb1ab0f499030f99d504ae34,
-        type: 3}
-      propertyPath: MaxMovementSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6949843087445126759, guid: 5fa94ab3bb1ab0f499030f99d504ae34,
-        type: 3}
-      propertyPath: MinMovementSpeed
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fa94ab3bb1ab0f499030f99d504ae34, type: 3}

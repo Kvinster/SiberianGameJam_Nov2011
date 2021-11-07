@@ -15,6 +15,7 @@ namespace SGJ.Core.Bathroom {
 		}
 
 		[Header("Parameters")]
+		public bool IsRight;
 		public float MinMovementSpeed;
 		public float MaxMovementSpeed;
 		public float SecondGrabMovementSpeed;
@@ -54,7 +55,7 @@ namespace SGJ.Core.Bathroom {
 					if ( TryMoveToPoint(_targetPos) ) {
 						if ( _isOverSoap ) {
 							_curState  = State.Grabbed;
-							_soapShift = transform.position - Soap.transform.position;
+							_soapShift = IsRight ? Soap.RightHandPos.localPosition : Soap.LeftHandPos.localPosition;
 							OnGrabbedSoap?.Invoke(this);
 						} else {
 							_curState = State.Returning;
@@ -96,7 +97,7 @@ namespace SGJ.Core.Bathroom {
 				return false;
 			}
 			_curState  = State.Chasing;
-			_targetPos = Soap.transform.position;
+			_targetPos = IsRight ? Soap.RightHandPos.position : Soap.LeftHandPos.position;
 			_movementSpeed =
 				isSecondGrab
 					? SecondGrabMovementSpeed

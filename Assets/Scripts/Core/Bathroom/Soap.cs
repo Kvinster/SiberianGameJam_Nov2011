@@ -13,6 +13,8 @@ namespace SGJ.Core.Bathroom {
 		public float MaxMovementForce;
 		public float ReloadTime;
 		[Header("Dependencies")]
+		public Transform LeftHandPos;
+		public Transform          RightHandPos;
 		public ColliderNotifier2D LeftNotifier;
 		public ColliderNotifier2D RightNotifier;
 
