@@ -726,9 +726,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d393a89721241bc97b913849a2e648d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinMovementSpeed: 5
-  MaxMovementSpeed: 5
-  SecondGrabMovementSpeed: 8
+  IsRight: 0
+  MinMovementSpeed: 10
+  MaxMovementSpeed: 12
+  SecondGrabMovementSpeed: 15
   LevelManager: {fileID: 0}
   TriggerNotifier: {fileID: 8637321033403770981}
   StartPos: {fileID: 0}
