@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -941,7 +941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2e69366bf741b0996eb0c9c7085698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTime: 3
+  WinShowTime: 3.3
+  LoseShowTime: 3.9
   ScreenShowTime: 0.25
   LevelManager: {fileID: 1314641380}
   LevelUiRoot: {fileID: 866416633}
@@ -1663,6 +1664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1661889550}
   - component: {fileID: 1661889549}
+  - component: {fileID: 1661889546}
   - component: {fileID: 1661889545}
   - component: {fileID: 1661889544}
   m_Layer: 0
@@ -1719,6 +1721,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1661889546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661889543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88aa1357be642f690a46505e6f6c3da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Soap: {fileID: 1661889549}
+  Clip: {fileID: 8300000, guid: f140d4a884fb2064fb1bda7ff5e69f6f, type: 3}
 --- !u!114 &1661889549
 MonoBehaviour:
   m_ObjectHideFlags: 0
