@@ -18,8 +18,17 @@ namespace SGJ.Utils {
 		float _prevAlpha;
 
 		void Reset() {
+			if ( SpriteRenderers == null ) {
+				SpriteRenderers = new List<SpriteRenderer>();
+			}
 			GetComponentsInChildren(SpriteRenderers);
+			if ( Texts == null ) {
+				Texts = new List<TMP_Text>();
+			}
 			GetComponentsInChildren(Texts);
+			if ( CanvasGroups == null ) {
+				CanvasGroups = new List<CanvasGroup>();
+			}
 			GetComponentsInChildren(CanvasGroups);
 		}
 
