@@ -22,13 +22,6 @@ namespace SGJ.Core.Bathroom {
 
 		public event Action<bool> OnLevelFinished;
 
-		void Start() {
-			IsLevelActive = true;
-			Soap.Activate();
-			HandsManager.Activate();
-			HandsManager.OnSoapFullyGrabbed += OnSoapFullyGrabbed;
-		}
-
 		void Update() {
 			if ( !IsLevelActive ) {
 				return;
@@ -37,6 +30,13 @@ namespace SGJ.Core.Bathroom {
 			if ( _playTimer >= PlayTime ) {
 				FinishLevel(true);
 			}
+		}
+
+		public void StartLevel() {
+			IsLevelActive = true;
+			Soap.Activate();
+			HandsManager.Activate();
+			HandsManager.OnSoapFullyGrabbed += OnSoapFullyGrabbed;
 		}
 
 		public void ExitToMeta() {
