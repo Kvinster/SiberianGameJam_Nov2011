@@ -5,7 +5,8 @@ using SGJ.Core.Common;
 namespace SGJ.Core.Toilet {
 	public sealed class ToiletUi : MonoBehaviour {
 		[Header("Parameters")]
-		public float ShowTime = 3f;
+		public float WinShowTime = 3.3f;
+		public float LoseShowTime   = 3.9f;
 		public float ScreenShowTime = 0.25f;
 		[Header("Dependencies")]
 		public ToiletLevelManager LevelManager;
@@ -15,6 +16,8 @@ namespace SGJ.Core.Toilet {
 
 		bool  _isEndScreenActive;
 		float _timer;
+
+		float _showTime;
 
 		void Start() {
 			WinScreen.InitHidden();
@@ -26,7 +29,7 @@ namespace SGJ.Core.Toilet {
 		void Update() {
 			if ( _isEndScreenActive ) {
 				_timer += Time.deltaTime;
-				if ( _timer >= ShowTime ) {
+				if ( _timer >= _showTime ) {
 					_isEndScreenActive = false;
 					LevelManager.ExitToMeta();
 				}
@@ -42,12 +45,14 @@ namespace SGJ.Core.Toilet {
 		}
 
 		void Win() {
+			_showTime = WinShowTime;
 			WinScreen.Show(ScreenShowTime);
 			LevelUiRoot.SetActive(false);
 			_isEndScreenActive = true;
 		}
 
 		void Lose() {
+			_showTime = LoseShowTime;
 			LoseScreen.Show(ScreenShowTime);
 			LevelUiRoot.SetActive(false);
 			_isEndScreenActive = true;

@@ -7,18 +7,21 @@ using TMPro;
 namespace SGJ.Core.Kitchen {
 	public sealed class KitchenUi : MonoBehaviour {
 		[Header("Parameters")]
-		public float ShowTime;
+		public float WinShowTime = 3.3f;
+		public float LoseShowTime   = 3.9f;
 		public float ScreenShowTime = 1f;
 		[Header("Dependencies")]
 		public KitchenLevelManager LevelManager;
-		public GameObject LevelUiRoot;
-		public TMP_Text   TimerText;
-		public TMP_Text   ProgressText;
+		public GameObject   LevelUiRoot;
+		public TMP_Text     TimerText;
+		public TMP_Text     ProgressText;
 		public CoreUiScreen WinScreen;
 		public CoreUiScreen LoseScreen;
 
 		bool  _isEndScreenActive;
 		float _timer;
+
+		float _showTime;
 
 		void Start() {
 			WinScreen.InitHidden();
@@ -32,7 +35,7 @@ namespace SGJ.Core.Kitchen {
 		void Update() {
 			if ( _isEndScreenActive ) {
 				_timer += Time.deltaTime;
-				if ( _timer >= ShowTime ) {
+				if ( _timer >= _showTime ) {
 					_isEndScreenActive = false;
 					LevelManager.ExitToMeta();
 				}
@@ -54,12 +57,14 @@ namespace SGJ.Core.Kitchen {
 		}
 
 		void Win() {
+			_showTime = WinShowTime;
 			WinScreen.Show(ScreenShowTime);
 			LevelUiRoot.SetActive(false);
 			_isEndScreenActive = true;
 		}
 
 		void Lose() {
+			_showTime = LoseShowTime;
 			LoseScreen.Show(ScreenShowTime);
 			LevelUiRoot.SetActive(false);
 			_isEndScreenActive = true;
