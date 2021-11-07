@@ -5,19 +5,27 @@ using UnityEngine.UI;
 using SGJ.Common;
 using SGJ.Controllers;
 
+using DG.Tweening;
 using TMPro;
 
 namespace SGJ.MainScreen {
 	public sealed class MainScreen : MonoBehaviour {
+		[Header("Parameters")]
+		public float IntroFadeTime = 0.5f;
+		[Header("Dependencies")]
 		public Button   StartGameButton;
-		public Button   ExitButton;
-		public TMP_Text VersionText;
+		public Button     ExitButton;
+		public TMP_Text   VersionText;
+		public GameObject IntroRoot;
+		public Graphic    IntroGraphic;
 
 		bool _showCheats;
+		bool _isIntroShown;
 
 		void Start() {
 			StartGameButton.onClick.AddListener(OnStartGameClick);
 			ExitButton.onClick.AddListener(OnExitClick);
+			IntroRoot.SetActive(false);
 			VersionText.text = $"Version: {Application.version}";
 		}
 
@@ -26,10 +34,16 @@ namespace SGJ.MainScreen {
 			     Input.GetKey(KeyCode.Alpha3) ) {
 				_showCheats = true;
 			}
+			if ( _isIntroShown && Input.anyKey ) {
+				StartGame();
+			}
 		}
 
 		void OnStartGameClick() {
-			SceneManager.LoadScene("Meta");
+			IntroRoot.SetActive(true);
+			IntroGraphic.color = new Color(1f, 1f, 1f, 0f);
+			IntroGraphic.DOFade(1f, IntroFadeTime);
+			_isIntroShown = true;
 		}
 
 		void OnExitClick() {
@@ -38,6 +52,11 @@ namespace SGJ.MainScreen {
 #else
 			Application.Quit();
 #endif
+		}
+
+		void StartGame() {
+			LevelController.Instance.ResetProgress();
+			SceneManager.LoadScene("Meta");
 		}
 
 		void OnGUI() {
