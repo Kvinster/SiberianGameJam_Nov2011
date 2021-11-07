@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -282,7 +282,7 @@ PrefabInstance:
     - target: {fileID: 6738601954979432187, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370359290744844262, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
@@ -550,7 +550,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 393ce5db06b31654584af43ec7be462a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1181,7 +1181,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 19432962832b78542878b95e247d4b4e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blendMode: 1
   scaleMode: 0
-  color: {r: 0.16420433, g: 0.30150384, b: 0.8490566, a: 1}
+  color: {r: 0.16420433, g: 0.30150384, b: 0.8490566, a: 0}
   detailLevel: 2
   renderQueue: -1
   zTest: 4
@@ -1327,7 +1327,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1538339208}
+  - {fileID: 1881441831}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1436,7 +1436,7 @@ PrefabInstance:
     - target: {fileID: 6738601954979432187, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370359290744844262, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
@@ -1548,7 +1548,7 @@ PrefabInstance:
     - target: {fileID: 6738601954979432187, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370359290744844262, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
@@ -1776,7 +1776,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c0018e15049d70f4cb0561c46c9d4866, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1857,7 +1857,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 40001d858b11e294d9b45c82392fbdf0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1867,36 +1867,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!21 &1538339208
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Rect Transparent (instance)
-  m_Shader: {fileID: 4800000, guid: 616a25aec4b286744b9fa8a7c081c531, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 3
-    - _StencilID: 1
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 4
-    m_Colors: []
 --- !u!1 &1660331233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,7 +1933,7 @@ PrefabInstance:
     - target: {fileID: 6738601954979432187, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370359290744844262, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
@@ -2260,6 +2230,36 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!21 &1881441831
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Rect Transparent (instance)
+  m_Shader: {fileID: 4800000, guid: 616a25aec4b286744b9fa8a7c081c531, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 3
+    - _StencilID: 1
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 4
+    m_Colors: []
 --- !u!1001 &1898421067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2536,7 +2536,7 @@ PrefabInstance:
     - target: {fileID: 6738601954979432187, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370359290744844262, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
@@ -2683,7 +2683,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1000
   m_Sprite: {fileID: 21300000, guid: 8b1b56fbb1faaeb42a0373d908c3789e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2729,7 +2729,7 @@ PrefabInstance:
     - target: {fileID: 6738601954979432187, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370359290744844262, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
@@ -2834,7 +2834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f78afdefa59e4e05af12f97b84a06752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Alpha: 1
+  Alpha: 0
   ShapeRenderers:
   - {fileID: 1206072948}
   SpriteRenderers:
@@ -2908,7 +2908,7 @@ PrefabInstance:
     - target: {fileID: 6738601954979432187, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370359290744844262, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
@@ -3118,7 +3118,7 @@ PrefabInstance:
     - target: {fileID: 6738601954979432187, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8370359290744844262, guid: 16ede54c60303ac49895b957640b742c,
         type: 3}
