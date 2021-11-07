@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1861,6 +1861,7 @@ MonoBehaviour:
   Cutscene0AlphaGroup: {fileID: 1808513442}
   Cutscene1AlphaGroup: {fileID: 1649743875}
   GameplayAlphaGroup: {fileID: 886655457}
+  WaterClip: {fileID: 8300000, guid: e3b91f244acc6ae4db731654f8c9ff65, type: 3}
 --- !u!4 &1773702042
 Transform:
   m_ObjectHideFlags: 0

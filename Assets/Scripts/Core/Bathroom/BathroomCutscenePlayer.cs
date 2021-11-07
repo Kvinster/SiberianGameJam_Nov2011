@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+using SGJ.Service;
 using SGJ.Utils;
 
 using DG.Tweening;
@@ -20,6 +21,8 @@ namespace SGJ.Core.Bathroom {
 		public AlphaGroup Cutscene0AlphaGroup;
 		public AlphaGroup Cutscene1AlphaGroup;
 		public AlphaGroup GameplayAlphaGroup;
+		[Space]
+		public AudioClip WaterClip;
 
 		void Start() {
 			Play();
@@ -33,6 +36,7 @@ namespace SGJ.Core.Bathroom {
 			GameplayAlphaGroup.Alpha  = 0f;
 
 			DOTween.Sequence()
+				.AppendCallback(() => AudioService.PlayInPool(this, WaterClip, true))
 				.AppendInterval(PlayTime)
 				.Append(DOTween.To(() => Cutscene0AlphaGroup.Alpha, x => Cutscene0AlphaGroup.Alpha = x, 0f, FadeTime))
 				.Join(DOTween.To(() => Cutscene1AlphaGroup.Alpha, x => Cutscene1AlphaGroup.Alpha = x, 1f, FadeTime))
@@ -40,6 +44,8 @@ namespace SGJ.Core.Bathroom {
 				.Join(GrandpaTransform.DORotate(GrandpaEndPos.rotation.eulerAngles, PlayTime))
 				.Append(DOTween.To(() => Cutscene1AlphaGroup.Alpha, x => Cutscene1AlphaGroup.Alpha = x, 0f, FadeTime))
 				.Join(DOTween.To(() => GameplayAlphaGroup.Alpha, x => GameplayAlphaGroup.Alpha   = x, 1f, FadeTime))
+				.Join(DOTween.To(() => AudioService.GetVolumeInPool(this), x => AudioService.SetVolumeInPool(this, x), 0f, FadeTime))
+				.AppendCallback(() => AudioService.StopInPool(this))
 				.AppendInterval(PauseTime)
 				.OnComplete(LevelManager.StartLevel);
 		}

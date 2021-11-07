@@ -52,5 +52,20 @@ namespace SGJ.Service {
 				Pool.Remove(key);
 			}
 		}
+
+		public static void SetVolumeInPool(object key, float volumeScale) {
+			Assert.IsNotNull(key);
+			if ( Pool.TryGetValue(key, out var audioSource) && audioSource ) {
+				audioSource.volume = Mathf.Clamp01(volumeScale);
+			}
+		}
+
+		public static float GetVolumeInPool(object key) {
+			Assert.IsNotNull(key);
+			if ( Pool.TryGetValue(key, out var audioSource) && audioSource ) {
+				return audioSource.volume;
+			}
+			return -1f;
+		}
 	}
 }
