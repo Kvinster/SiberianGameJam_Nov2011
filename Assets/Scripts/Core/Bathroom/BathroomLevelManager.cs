@@ -10,10 +10,13 @@ namespace SGJ.Core.Bathroom {
 		[Header("Parameters")]
 		public float PlayTime = 30f;
 		[Header("Dependencies")]
+		public GameObject TutorialRoot;
 		public Soap Soap;
 		public HandsManager HandsManager;
 
 		float _playTimer;
+
+		bool _isTutorialShown;
 
 		public float TimeLeft      => Mathf.Max(0f, PlayTime - _playTimer);
 		public float LevelProgress => Mathf.Clamp01(_playTimer / PlayTime);
@@ -23,6 +26,11 @@ namespace SGJ.Core.Bathroom {
 		public event Action<bool> OnLevelFinished;
 
 		void Update() {
+			if ( _isTutorialShown && Input.anyKey ) {
+				TutorialRoot.SetActive(false);
+				_isTutorialShown = false;
+				Activate();
+			}
 			if ( !IsLevelActive ) {
 				return;
 			}
@@ -33,14 +41,19 @@ namespace SGJ.Core.Bathroom {
 		}
 
 		public void StartLevel() {
-			IsLevelActive = true;
-			Soap.Activate();
-			HandsManager.Activate();
-			HandsManager.OnSoapFullyGrabbed += OnSoapFullyGrabbed;
+			TutorialRoot.SetActive(true);
+			_isTutorialShown = true;
 		}
 
 		public void ExitToMeta() {
 			SceneManager.LoadScene("Meta");
+		}
+
+		void Activate() {
+			IsLevelActive = true;
+			Soap.Activate();
+			HandsManager.Activate();
+			HandsManager.OnSoapFullyGrabbed += OnSoapFullyGrabbed;
 		}
 
 		void FinishLevel(bool win) {
