@@ -14,6 +14,8 @@ namespace SGJ.Core.Toilet {
 		[Header("Parameters")]
 		public int TotalClicks;
 
+		public bool IsActive { get; set; }
+
 		protected int  CurClicks { get; set; }
 		protected bool IsAlive   { get; set; } = true;
 
@@ -31,7 +33,7 @@ namespace SGJ.Core.Toilet {
 		}
 
 		public void OnPointerClick(PointerEventData eventData) {
-			if ( !IsAlive ) {
+			if ( !IsActive || !IsAlive ) {
 				return;
 			}
 			++CurClicks;

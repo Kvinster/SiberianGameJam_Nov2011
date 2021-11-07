@@ -19,12 +19,18 @@ namespace SGJ.Core.Toilet {
 		public event Action<bool> OnLevelFinished;
 
 		void Start() {
-			IsLevelActive = true;
 			BaseToiletPart.OnToiletPartDestroyed += OnToiletPartDestroyed;
 		}
 
 		void OnDisable() {
 			BaseToiletPart.OnToiletPartDestroyed -= OnToiletPartDestroyed;
+		}
+
+		public void StartLevel() {
+			IsLevelActive = true;
+			foreach ( var toiletPart in BaseToiletPart.Instances ) {
+				toiletPart.IsActive = true;
+			}
 		}
 
 		void OnToiletPartDestroyed() {
