@@ -2,6 +2,8 @@
 
 using System.Collections.Generic;
 
+using Shapes;
+
 using TMPro;
 
 namespace SGJ.Utils {
@@ -11,13 +13,18 @@ namespace SGJ.Utils {
 		[Range(0f, 1f)]
 		public float Alpha = 1f;
 		[Header("Dependencies")]
+		public List<ShapeRenderer> ShapeRenderers;
 		public List<SpriteRenderer> SpriteRenderers;
-		public List<TMP_Text>    Texts;
-		public List<CanvasGroup> CanvasGroups;
+		public List<TMP_Text>       Texts;
+		public List<CanvasGroup>    CanvasGroups;
 
 		float _prevAlpha;
 
 		void Reset() {
+			if ( ShapeRenderers == null ) {
+				ShapeRenderers = new List<ShapeRenderer>();
+			}
+			GetComponentsInChildren(ShapeRenderers);
 			if ( SpriteRenderers == null ) {
 				SpriteRenderers = new List<SpriteRenderer>();
 			}
@@ -40,6 +47,9 @@ namespace SGJ.Utils {
 
 		void Update() {
 			if ( !Application.isPlaying || !Mathf.Approximately(_prevAlpha, Alpha) ) {
+				foreach ( var sr in ShapeRenderers ) {
+					TryChangeShapeRendererAlpha(sr, Alpha);
+				}
 				foreach ( var sr in SpriteRenderers ) {
 					TryChangeSpriteRendererAlpha(sr, Alpha);
 				}
@@ -52,6 +62,18 @@ namespace SGJ.Utils {
 				if ( Application.isPlaying ) {
 					_prevAlpha = Alpha;
 				}
+			}
+		}
+
+		void TryChangeShapeRendererAlpha(ShapeRenderer sr, float alpha) {
+			var curAlpha = sr.Color.a;
+			if ( !Mathf.Approximately(curAlpha, alpha) ) {
+				sr.Color = new Color(sr.Color.r, sr.Color.g, sr.Color.b, alpha);
+#if UNITY_EDITOR
+				if ( !Application.isPlaying ) {
+					UnityEditor.EditorUtility.SetDirty(sr);
+				}
+#endif
 			}
 		}
 
