@@ -1089,6 +1089,7 @@ MonoBehaviour:
   Cutscene0AlphaGroup: {fileID: 1453992083}
   Cutscene1AlphaGroup: {fileID: 75904652}
   GameplayAlphaGroup: {fileID: 1365678857}
+  StepsClip: {fileID: 8300000, guid: 219ff130e294a264f8977bfb5296e1c7, type: 3}
 --- !u!4 &1095218671
 Transform:
   m_ObjectHideFlags: 0
