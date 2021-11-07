@@ -11,7 +11,7 @@ using DG.Tweening;
 namespace SGJ.Meta {
 	public sealed class MetaManager : MonoBehaviour {
 		[Header("Parameters")]
-		public float PauseTime;
+		public float   PauseTime;
 		public float   ZoomTime;
 		public float   CameraStartSize = 5f;
 		public float   CameraZoomSize;
@@ -24,11 +24,19 @@ namespace SGJ.Meta {
 		public GameObject   ProgressBarRoot;
 		public GameObject[] ProgressBarElements;
 
+		bool _isWinScreenShown;
+
 		void Start() {
 			if ( LevelController.Instance.IsGameWon ) {
 				AnimAndLoadVictory();
 			} else {
 				AnimAndLoadNextRoom();
+			}
+		}
+
+		void Update() {
+			if ( _isWinScreenShown && Input.anyKey ) {
+				LoadMainMenu();
 			}
 		}
 
@@ -38,9 +46,7 @@ namespace SGJ.Meta {
 			CameraTransform.position = CameraStartPos;
 			Camera.orthographicSize  = CameraStartSize;
 
-			DOTween.Sequence()
-				.AppendInterval(PauseTime)
-				.OnComplete(LoadMainMenu);
+			_isWinScreenShown = true;
 		}
 
 		void AnimAndLoadNextRoom() {
