@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 
 namespace SGJ.Core.Toilet {
-	[RequireComponent(typeof(Collider2D))]
 	public abstract class BaseToiletPart : MonoBehaviour, IPointerClickHandler {
 		public static readonly HashSet<BaseToiletPart> Instances = new HashSet<BaseToiletPart>();
 
@@ -13,6 +12,8 @@ namespace SGJ.Core.Toilet {
 
 		[Header("Parameters")]
 		public int TotalClicks;
+
+		Collider2D _collider;
 
 		public bool IsActive { get; set; }
 
@@ -31,6 +32,7 @@ namespace SGJ.Core.Toilet {
 		}
 
 		protected virtual void Start() {
+			_collider = GetComponent<Collider2D>();
 			OnCurClicksChanged();
 		}
 
@@ -47,7 +49,8 @@ namespace SGJ.Core.Toilet {
 		}
 
 		protected void FinishFinish() {
-			Destroy(gameObject);
+			Destroy(_collider);
+			enabled = false;
 		}
 
 		protected abstract void OnFinishStarted();

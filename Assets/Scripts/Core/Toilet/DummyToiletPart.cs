@@ -1,14 +1,22 @@
 ﻿using UnityEngine;
 
-using TMPro;
-
 namespace SGJ.Core.Toilet {
 	public sealed class DummyToiletPart : BaseToiletPart {
-		[Header("Impl Dependencies")]
-		public TMP_Text Text;
+		public SpriteRenderer SpriteRenderer;
+		public Sprite[]       StateSprites;
+		public Sprite         FinalSprite;
 
 		protected override void OnCurClicksChanged() {
-			Text.text = $"{CurClicks} / {TotalClicks}";
+			if ( CurClicks == 0 ) {
+				SpriteRenderer.sprite = null;
+				return;
+			}
+			if ( CurClicks == TotalClicks ) {
+				SpriteRenderer.sprite = FinalSprite;
+				return;
+			}
+			var index = Mathf.Clamp(Mathf.FloorToInt((float) StateSprites.Length * CurClicks / TotalClicks), 0, StateSprites.Length - 1);
+			SpriteRenderer.sprite = StateSprites[index];
 		}
 
 		protected override void OnFinishStarted() {
